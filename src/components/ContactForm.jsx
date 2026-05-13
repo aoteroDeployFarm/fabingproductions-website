@@ -13,7 +13,12 @@ const INQUIRY_OPTIONS = [
 
 const INITIAL = { name: '', email: '', purpose: '', message: '' }
 
-export default function ContactForm() {
+/**
+ * Props:
+ *   embedded — when true, strips the outer section padding so the form
+ *              can be placed inside another container (e.g. BookPage card)
+ */
+export default function ContactForm({ embedded = false }) {
   const [searchParams] = useSearchParams()
   const [form, setForm] = useState(INITIAL)
   const [status, setStatus] = useState('idle') // idle | sending | success | error
@@ -56,11 +61,17 @@ export default function ContactForm() {
   const inputClass =
     'w-full bg-zinc-900 border border-zinc-800 text-zinc-100 text-sm px-4 py-3 placeholder-zinc-600 focus:outline-none focus:border-gold-500 transition-colors duration-200'
 
+  const Wrapper = embedded ? 'div' : 'section'
+  const wrapperProps = embedded
+    ? {}
+    : { id: 'contact', className: 'py-24 px-6 bg-zinc-950 border-t border-zinc-800/60' }
+  const innerClass = embedded ? '' : 'max-w-2xl mx-auto'
+
   return (
-    <section id="contact" className="py-24 px-6 bg-zinc-950 border-t border-zinc-800/60">
-      <div className="max-w-2xl mx-auto">
+    <Wrapper {...wrapperProps}>
+      <div className={innerClass}>
         {/* Header */}
-        <div className="mb-12 text-center">
+        <div className="mb-8 text-center">
           <p className="text-gold-400 text-xs tracking-[0.4em] uppercase mb-4">Get in Touch</p>
           <h2
             className="font-cinzel text-4xl md:text-5xl font-semibold text-zinc-100"
@@ -177,6 +188,6 @@ export default function ContactForm() {
           </form>
         )}
       </div>
-    </section>
+    </Wrapper>
   )
 }

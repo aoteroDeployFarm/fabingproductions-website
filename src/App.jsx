@@ -2,24 +2,28 @@ import { lazy, Suspense } from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import MainLayout from './layouts/MainLayout'
 
-const Home        = lazy(() => import('./pages/Home'))
-const StudioPage  = lazy(() => import('./pages/services/StudioPage'))
-const PodcastPage = lazy(() => import('./pages/services/PodcastPage'))
-const EventsPage  = lazy(() => import('./pages/services/EventsPage'))
-const VideoPage   = lazy(() => import('./pages/services/VideoPage'))
+// ── Top-level pages ───────────────────────────────────────────────────────────
+const Home            = lazy(() => import('./pages/Home'))
+const StudioFullPage  = lazy(() => import('./pages/StudioFullPage'))
+const WorkPage        = lazy(() => import('./pages/WorkPage'))
+const BookPage        = lazy(() => import('./pages/BookPage'))
 
-function PageShell({ children }) {
+// ── /services/* sub-pages ─────────────────────────────────────────────────────
+const ServiceStudio   = lazy(() => import('./pages/services/StudioPage'))
+const ServicePodcast  = lazy(() => import('./pages/services/PodcastPage'))
+const ServiceEvents   = lazy(() => import('./pages/services/EventsPage'))
+const ServiceVideo    = lazy(() => import('./pages/services/VideoPage'))
+
+function Spinner() {
   return (
-    <Suspense
-      fallback={
-        <div className="min-h-screen flex items-center justify-center bg-zinc-950">
-          <div className="w-8 h-8 border-2 border-zinc-700 border-t-gold-500 rounded-full animate-spin" />
-        </div>
-      }
-    >
-      {children}
-    </Suspense>
+    <div className="min-h-screen flex items-center justify-center bg-zinc-950">
+      <div className="w-8 h-8 border-2 border-zinc-700 border-t-gold-500 rounded-full animate-spin" />
+    </div>
   )
+}
+
+function Page({ children }) {
+  return <Suspense fallback={<Spinner />}>{children}</Suspense>
 }
 
 const router = createBrowserRouter([
@@ -27,11 +31,17 @@ const router = createBrowserRouter([
     path: '/',
     element: <MainLayout />,
     children: [
-      { index: true,              element: <PageShell><Home /></PageShell> },
-      { path: 'services/studio',  element: <PageShell><StudioPage /></PageShell> },
-      { path: 'services/podcast', element: <PageShell><PodcastPage /></PageShell> },
-      { path: 'services/events',  element: <PageShell><EventsPage /></PageShell> },
-      { path: 'services/video',   element: <PageShell><VideoPage /></PageShell> },
+      // Top-level nav routes
+      { index: true,            element: <Page><Home /></Page> },
+      { path: 'studio',         element: <Page><StudioFullPage /></Page> },
+      { path: 'work',           element: <Page><WorkPage /></Page> },
+      { path: 'book',           element: <Page><BookPage /></Page> },
+
+      // Service deep-dive routes
+      { path: 'services/studio',  element: <Page><ServiceStudio /></Page> },
+      { path: 'services/podcast', element: <Page><ServicePodcast /></Page> },
+      { path: 'services/events',  element: <Page><ServiceEvents /></Page> },
+      { path: 'services/video',   element: <Page><ServiceVideo /></Page> },
     ],
   },
 ])
