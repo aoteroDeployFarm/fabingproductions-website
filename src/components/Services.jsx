@@ -1,159 +1,160 @@
 import { useInView } from 'react-intersection-observer'
 
-// --- SVG icons -----------------------------------------------------------
+// ── Icons ────────────────────────────────────────────────────────────────────
+
+function IconMic() {
+  return (
+    <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+      <rect x="9" y="2" width="6" height="11" rx="3" stroke="currentColor" strokeWidth="1.4" />
+      <path stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"
+        d="M5 10a7 7 0 0014 0M12 21v-4M8 21h8" />
+    </svg>
+  )
+}
+
+function IconHeadphones() {
+  return (
+    <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+      <path stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"
+        d="M3 18v-6a9 9 0 0118 0v6" />
+      <path stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"
+        d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3v5zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3v5z" />
+    </svg>
+  )
+}
+
+function IconStage() {
+  return (
+    <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+      <path stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"
+        d="M9 3h6l1 4H8L9 3z" />
+      <path stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"
+        d="M8 7L5 20M16 7l3 13M5 14h14" />
+      <circle cx="12" cy="6.5" r="1" stroke="currentColor" strokeWidth="1.2" />
+    </svg>
+  )
+}
 
 function IconFilm() {
   return (
-    <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" aria-hidden="true">
-      <rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" strokeWidth="1.25" />
-      <path stroke="currentColor" strokeWidth="1.25" strokeLinecap="round"
+    <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+      <rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" strokeWidth="1.4" />
+      <path stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"
         d="M7 4v16M17 4v16M2 9h5M17 9h5M2 15h5M17 15h5" />
     </svg>
   )
 }
 
-function IconWaveform() {
-  return (
-    <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" aria-hidden="true">
-      <path stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round"
-        d="M2 12h2M4 12c0-2 1-4 2-4s2 2 2 4-1 4-2 4-2-2-2-4zM10 12c0-3.5 1-6 2-6s2 2.5 2 6-1 6-2 6-2-2.5-2-6zM16 12c0-2 1-4 2-4s2 2 2 4-1 4-2 4-2-2-2-4zM20 12h2" />
-    </svg>
-  )
-}
-
-function IconStageLight() {
-  return (
-    <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" aria-hidden="true">
-      {/* Spotlight housing */}
-      <path stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round"
-        d="M9 3h6l1 4H8L9 3z" />
-      {/* Beam */}
-      <path stroke="currentColor" strokeWidth="1.25" strokeLinecap="round"
-        d="M8 7L5 20M16 7l3 13M8 7h8" />
-      {/* Spread lines */}
-      <path stroke="currentColor" strokeWidth="1" strokeLinecap="round" opacity="0.5"
-        d="M5.5 13.5l-2 1M18.5 13.5l2 1M11 20l-.5 2M13 20l.5 2" />
-      {/* Lens circle */}
-      <circle cx="12" cy="7" r="1.5" stroke="currentColor" strokeWidth="1" />
-    </svg>
-  )
-}
-
-// --- Service data --------------------------------------------------------
+// ── Service data ─────────────────────────────────────────────────────────────
 
 const SERVICES = [
   {
-    id: 'video',
-    label: 'Visual Production',
-    icon: <IconFilm />,
-    tagline: 'Stories that move people.',
+    id: 'studio',
+    label: 'Studio Production',
+    icon: <IconMic />,
+    color: 'text-gold-400',
+    border: 'hover:border-gold-600/40',
+    glow: 'from-gold-500/10',
+    pills: ['Recording', 'Mixing', 'Mastering', 'Live Tracking'],
     description:
-      'From commercial campaigns and music videos to short films and branded content — we handle concept, direction, cinematography, editing, color grading, and VFX under one roof.',
-    capabilities: [
-      'Cinematography & Direction',
-      'Color Grading & VFX',
-      'Branded & Commercial Content',
-      'Music Videos & Narratives',
-    ],
-    accent: 'from-gold-500/20 to-transparent',
+      'High-fidelity music recording, mixing, and mastering. A dedicated space for artists and bands to capture their sound with precision.',
   },
   {
-    id: 'audio',
-    label: 'Audio Engineering',
-    icon: <IconWaveform />,
-    tagline: 'Sound that shapes emotion.',
+    id: 'podcast',
+    label: 'Podcast & Broadcast',
+    icon: <IconHeadphones />,
+    color: 'text-sky-400',
+    border: 'hover:border-sky-600/40',
+    glow: 'from-sky-500/10',
+    pills: ['Podcast', 'Live Stream', 'Multi-Cam', 'ISO Audio'],
     description:
-      'Professional recording, mixing, and mastering for music, podcasts, voice-over, and post-production audio. Our acoustically treated studio and field-recording rigs cover every format.',
-    capabilities: [
-      'Music Recording & Mixing',
-      'Podcast & Voice-Over',
-      'Film & Video Post Audio',
-      'Sound Design & Foley',
-    ],
-    accent: 'from-sky-500/10 to-transparent',
+      'Full-service podcast production and live-streamed broadcasts with professional multi-cam direction and isolated audio tracking.',
   },
   {
     id: 'events',
-    label: 'Event Production',
-    icon: <IconStageLight />,
-    tagline: 'Experiences audiences remember.',
+    label: 'Concert & Event Ops',
+    icon: <IconStage />,
+    color: 'text-violet-400',
+    border: 'hover:border-violet-600/40',
+    glow: 'from-violet-500/10',
+    pills: ['FOH Sound', 'Stage Lighting', 'LED Walls', 'Coordination'],
     description:
-      'End-to-end technical management for concerts, corporate showcases, and large-scale events — live sound, stage design, video playback, lighting rigs, and on-site crew coordination.',
-    capabilities: [
-      'Live Sound & PA Systems',
-      'Stage Design & Lighting',
-      'Video Playback & LED Walls',
-      'Technical Coordination',
-    ],
-    accent: 'from-violet-500/10 to-transparent',
+      'Full-scale live event coordination — from front-of-house sound to stage lighting and immersive visuals for concerts and corporate events.',
+  },
+  {
+    id: 'video',
+    label: 'Visual Storytelling',
+    icon: <IconFilm />,
+    color: 'text-rose-400',
+    border: 'hover:border-rose-600/40',
+    glow: 'from-rose-500/10',
+    pills: ['Music Videos', 'Commercial', 'Color Grade', 'VFX'],
+    description:
+      'Cinematic video production, music videos, and commercial content — direction, cinematography, editing, and color grading under one roof.',
   },
 ]
 
-// --- Card ----------------------------------------------------------------
+// ── Card ─────────────────────────────────────────────────────────────────────
 
-function ServiceCard({ service, index }) {
+function ServiceCard({ svc, index }) {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.08 })
 
   return (
     <article
       ref={ref}
-      className={`relative flex flex-col bg-zinc-900 border border-zinc-800 p-8 transition-all duration-700 ease-out group hover:border-zinc-700 ${
+      className={`relative flex flex-col bg-zinc-900 border border-zinc-800 p-7 transition-all duration-700 ease-out group ${svc.border} ${
         inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
       }`}
-      style={{ transitionDelay: `${index * 120}ms` }}
+      style={{ transitionDelay: `${index * 100}ms` }}
     >
-      {/* Subtle top-gradient accent per pillar */}
-      <div className={`absolute top-0 inset-x-0 h-32 bg-gradient-to-b ${service.accent} opacity-40 pointer-events-none`} />
+      {/* Per-pillar top glow */}
+      <div className={`absolute top-0 inset-x-0 h-24 bg-gradient-to-b ${svc.glow} to-transparent pointer-events-none opacity-60`} />
 
       {/* Icon */}
-      <div className="relative mb-6 text-gold-400 group-hover:text-gold-300 transition-colors duration-300">
-        {service.icon}
+      <div className={`relative mb-5 ${svc.color} transition-transform duration-300 group-hover:scale-110 group-hover:translate-y-[-2px]`}>
+        {svc.icon}
       </div>
 
-      {/* Heading */}
+      {/* Title */}
       <h3
-        className="font-cinzel text-xl font-semibold text-zinc-100 mb-2 group-hover:text-gold-400 transition-colors duration-300"
+        className={`font-cinzel text-lg font-semibold text-zinc-100 mb-3 transition-colors duration-200 group-hover:${svc.color.replace('text-', 'text-')}`}
         style={{ fontFamily: "'Cinzel', serif" }}
       >
-        {service.label}
+        {svc.label}
       </h3>
 
-      <p className="text-gold-500/70 text-xs tracking-widest uppercase mb-4">
-        {service.tagline}
-      </p>
+      {/* Description */}
+      <p className="text-zinc-500 text-sm leading-relaxed mb-5 flex-1">{svc.description}</p>
 
-      <p className="text-zinc-400 text-sm leading-relaxed mb-6 flex-1">
-        {service.description}
-      </p>
-
-      {/* Capability list */}
-      <ul className="space-y-2">
-        {service.capabilities.map(cap => (
-          <li key={cap} className="flex items-center gap-3 text-xs text-zinc-500 tracking-wide">
-            <span className="w-3 h-px bg-gold-600 flex-shrink-0" />
-            {cap}
-          </li>
+      {/* Capability pills */}
+      <div className="flex flex-wrap gap-2 mt-auto">
+        {svc.pills.map(p => (
+          <span
+            key={p}
+            className="text-xs px-2.5 py-1 bg-zinc-800 text-zinc-400 tracking-wide border border-zinc-700/50"
+          >
+            {p}
+          </span>
         ))}
-      </ul>
+      </div>
 
-      {/* Bottom accent line on hover */}
-      <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-gold-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      {/* Bottom accent on hover */}
+      <div className={`absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent ${svc.glow.replace('from-', 'via-').replace('/10', '/60')} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
     </article>
   )
 }
 
-// --- Section -------------------------------------------------------------
+// ── Section ───────────────────────────────────────────────────────────────────
 
 export default function Services() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 })
 
   return (
-    <section id="services" className="py-24 px-6 bg-zinc-950/80">
+    <section id="services" className="py-24 px-6 bg-zinc-950">
       <div className="max-w-7xl mx-auto">
-        {/* Section header */}
         <div
           ref={ref}
-          className={`mb-16 text-center transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+          className={`mb-14 text-center transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
         >
           <p className="text-gold-400 text-xs tracking-[0.4em] uppercase mb-4">What We Do</p>
           <h2
@@ -162,17 +163,27 @@ export default function Services() {
           >
             Full-Service Production
           </h2>
-          <div className="mt-6 mx-auto w-16 h-px bg-gradient-to-r from-transparent via-gold-500 to-transparent" />
-          <p className="mt-6 text-zinc-500 text-sm max-w-xl mx-auto leading-relaxed">
-            Three distinct disciplines. One creative team. Seamlessly delivered under one roof.
+          <div className="mt-5 mx-auto w-16 h-px bg-gradient-to-r from-transparent via-gold-500 to-transparent" />
+          <p className="mt-5 text-zinc-500 text-sm max-w-lg mx-auto leading-relaxed">
+            Four disciplines. One creative team. Every project produced end-to-end.
           </p>
         </div>
 
-        {/* Cards grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* 4-column responsive grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {SERVICES.map((svc, i) => (
-            <ServiceCard key={svc.id} service={svc} index={i} />
+            <ServiceCard key={svc.id} svc={svc} index={i} />
           ))}
+        </div>
+
+        {/* CTA row */}
+        <div className="mt-12 text-center">
+          <a
+            href="#contact"
+            className="inline-block px-8 py-3 border border-zinc-700 text-zinc-400 text-sm tracking-widest uppercase hover:border-gold-500 hover:text-gold-400 transition-colors duration-200"
+          >
+            Book a Consultation
+          </a>
         </div>
       </div>
     </section>

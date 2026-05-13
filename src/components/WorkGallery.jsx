@@ -32,6 +32,7 @@ const CATEGORIES = [
   {
     id: 'Audio',
     label: 'Audio',
+    // Firestore category tag: "Audio"
     icon: (
       <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24">
         <path stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"
@@ -42,8 +43,8 @@ const CATEGORIES = [
     ),
   },
   {
-    id: 'Events',
-    label: 'Events',
+    id: 'Live Events',
+    label: 'Live Events',
     icon: (
       <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24">
         <path stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
@@ -55,11 +56,11 @@ const CATEGORIES = [
   },
 ]
 
-// Category badge accent colours — keyed by category id
+// Category badge accent colours — keyed by Firestore category value
 const BADGE_STYLES = {
-  Video:  'bg-zinc-950/80 text-gold-400',
-  Audio:  'bg-zinc-950/80 text-sky-400',
-  Events: 'bg-zinc-950/80 text-violet-400',
+  Video:        'bg-zinc-950/80 text-gold-400',
+  Audio:        'bg-zinc-950/80 text-sky-400',
+  'Live Events': 'bg-zinc-950/80 text-violet-400',
 }
 
 // Default thumbnail placeholder icon per category
@@ -72,7 +73,7 @@ function PlaceholderIcon({ category }) {
       </svg>
     )
   }
-  if (category === 'Events') {
+  if (category === 'Live Events') {
     return (
       <svg className="w-12 h-12 text-zinc-700" fill="none" viewBox="0 0 24 24">
         <path stroke="currentColor" strokeWidth="1" strokeLinecap="round"
@@ -290,7 +291,7 @@ export default function WorkGallery() {
 // Required fields:
 {
   title:        string,
-  category:     "Video" | "Audio" | "Events",
+  category:     "Video" | "Audio" | "Live Events",
   year:         number,
   description:  string,
   thumbnailUrl: string | null,
