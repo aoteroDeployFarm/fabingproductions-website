@@ -5,8 +5,9 @@ All notable changes to the Fabing Productions website are documented in this fil
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).  
 Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-> **Deployment target:** Firebase Hosting → Site ID `fabing-productions` (GCP project `botridge`)  
-> **Safety rule:** All deploys use `firebase deploy --only hosting:fabing` — `botridge.com` is never modified.
+> **Deployment target:** Firebase Hosting → Site ID `fabingproductions-website` (GCP project `botridge`)  
+> **Live URL:** https://fabingproductions-website.web.app  
+> **Safety rule:** All deploys use `firebase deploy --only hosting:fabing` — `botridge` and `botridge-admin` sites are never modified.
 
 ---
 
@@ -16,13 +17,26 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Real audio file assets for AudioPlayer sample tracks
 - Studio facility photography for `/studio` page hero and facility cards
 - `og-image.jpg` for Open Graph social preview
-- Firestore `productions` collection — seed with initial portfolio documents
+- `VITE_FIREBASE_API_KEY` and `VITE_FIREBASE_APP_ID` filled in → live Firestore client connection
 - EmailJS template configuration and send testing
+- Cloudflare custom domain `fabingproductions.com` connected to `fabingproductions-website` site
 - Cloudflare secrets (`CF_ZONE_ID`, `CF_API_TOKEN`) wired to GitHub Actions
 - Analytics integration (Google Analytics 4 or Cloudflare Web Analytics)
 - `robots.txt` and `sitemap.xml` for search indexing
 - PWA manifest (`manifest.json`) and service worker for offline support
 - Performance audit (Lighthouse CI gate in GitHub Actions)
+
+---
+
+## [0.5.0] — 2026-05-13 · Phase 2 · Staging — First Production Deploy
+
+### Added
+- **Live hosting site** — `fabingproductions-website` created on GCP project `botridge`; live at `https://fabingproductions-website.web.app`
+- **Firestore production seed** — 8 portfolio entries batch-committed to live `productions` collection via Application Default Credentials: 3 Audio, 3 Video, 2 Live Events; ordered by `year desc`
+
+### Changed
+- **`.firebaserc`** — `fabing` target remapped from stale `fabing-productions` → `fabingproductions-website`; stale entry removed to prevent multi-site deploy
+- **`CHANGELOG.md`** — deployment target header updated to reflect new Site ID and live URL
 
 ---
 
