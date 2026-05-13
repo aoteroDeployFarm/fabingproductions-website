@@ -145,14 +145,14 @@ function Track({ track, isActive, onActivate }) {
         <WaveformBars progress={progress} />
       </div>
 
-      {/* Hidden audio element */}
+      {/* Hidden audio element — src omitted entirely when falsy to avoid src="" browser warning */}
       <audio
         ref={audioRef}
-        src={track.src}
+        {...(track.src ? { src: track.src } : {})}
         onTimeUpdate={handleTimeUpdate}
         onLoadedMetadata={handleLoadedMetadata}
         onEnded={handleEnded}
-        preload="metadata"
+        preload={track.src ? 'metadata' : 'none'}
       />
     </div>
   )

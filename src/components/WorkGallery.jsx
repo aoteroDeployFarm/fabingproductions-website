@@ -107,7 +107,7 @@ function ProductionCard({ item, index }) {
     >
       {/* Thumbnail */}
       <div className="relative aspect-video overflow-hidden bg-zinc-800">
-        {item.thumbnailUrl ? (
+        {item.thumbnailUrl && item.thumbnailUrl.trim() !== '' ? (
           <img
             src={item.thumbnailUrl}
             alt={item.title}
@@ -214,7 +214,12 @@ export default function WorkGallery({
         const snapshot = await getDocs(q)
         setProductions(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })))
       } catch (err) {
-        console.error('Firestore fetch error:', err)
+        console.error(
+          '[WorkGallery] Firestore fetch failed',
+          '\n  code   :', err.code    ?? 'n/a',
+          '\n  message:', err.message ?? String(err),
+          '\n  hint   : VITE_USE_EMULATOR =', import.meta.env.VITE_USE_EMULATOR,
+        )
         setError('Could not load productions.')
       } finally {
         setLoading(false)
