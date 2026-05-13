@@ -26,6 +26,22 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
+## [0.4.0] — 2026-05-13 · Phase 2 · Staging — Firebase Emulator Integration
+
+### Added
+- **`VITE_USE_EMULATOR` flag** — `.env.local` now includes `VITE_USE_EMULATOR=false`; set to `true` to route all Firebase calls through the local Emulator Suite without any code changes
+- **Firestore emulator connection** — `connectFirestoreEmulator(db, 'localhost', 8080, { merge: true })`; `{ merge: true }` prevents double-connect crashes on Vite HMR module re-evaluation
+- **Functions emulator connection** — `connectFunctionsEmulator(functions, 'localhost', 5001)`
+- **`auth` export** — `getAuth(app)` wrapped in try-catch IIFE; gracefully returns `null` when API key is absent (dev without credentials) rather than crashing the app at module load time
+- **`storage` export** — `getStorage(app)` wrapped identically; same null-safe pattern
+- **`app` export** — Firebase App instance now exported for consumers that need direct access
+
+### Changed
+- **`src/lib/firebase.js`** — full refactor: HMR guard via `getApps().length ? getApp() : initializeApp(config)` prevents "Firebase App already exists" error on Vite hot reload; exports expanded from 2 (`db`, `functions`) to 6 (`app`, `db`, `functions`, `auth`, `storage`, + emulator block)
+- **`.env.local`** — `VITE_USE_EMULATOR=false` added with inline comment (port references: Firestore :8080, Functions :5001)
+
+---
+
 ## [0.3.0] — 2026-05-12 · Phase 1 · Alpha — Multi-Page Architecture
 
 ### Added
@@ -135,13 +151,14 @@ These items are tracked for resolution in upcoming milestones.
 
 | Phase | Version Range | Status | Description |
 |---|---|---|---|
-| **Development (Alpha)** | 0.0.1 – 0.x.x | ✅ In progress | Local scaffolding, component buildout, routing |
-| **Staging / Fixes** | 0.x.x – 0.9.x | ⏳ Upcoming | Asset integration, Firebase data seeding, QA |
+| **Development (Alpha)** | 0.0.1 – 0.3.x | ✅ Complete | Local scaffolding, component buildout, routing |
+| **Staging / Fixes** | 0.4.x – 0.9.x | 🔄 In progress | Emulator integration, asset integration, Firebase data seeding, QA |
 | **Production (Live)** | 1.0.0 | ⏳ Upcoming | Full deploy to `fabingproductions.com` via `fabing-productions` site |
 
 ---
 
-[Unreleased]: https://github.com/aoteroDeployFarm/fabingproductions-website/compare/v0.3.0...HEAD
+[Unreleased]: https://github.com/aoteroDeployFarm/fabingproductions-website/compare/v0.4.0...HEAD
+[0.4.0]: https://github.com/aoteroDeployFarm/fabingproductions-website/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/aoteroDeployFarm/fabingproductions-website/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/aoteroDeployFarm/fabingproductions-website/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/aoteroDeployFarm/fabingproductions-website/compare/v0.0.1...v0.1.0
