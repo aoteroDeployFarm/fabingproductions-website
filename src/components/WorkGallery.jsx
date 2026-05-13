@@ -189,11 +189,23 @@ function Skeletons() {
 // Main gallery
 // ---------------------------------------------------------------------------
 
-export default function WorkGallery() {
+/**
+ * Props:
+ *   defaultCategory — pre-selected filter tab (default: 'all')
+ *   showFilters     — whether to show the filter tab bar (default: true)
+ *   sectionTitle    — heading text (default: 'Our Work')
+ *   emptyMessage    — custom empty-state copy
+ */
+export default function WorkGallery({
+  defaultCategory = 'all',
+  showFilters = true,
+  sectionTitle = 'Our Work',
+  emptyMessage = 'Productions coming soon.',
+}) {
   const [productions, setProductions] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
-  const [activeCategory, setActiveCategory] = useState('all')
+  const [activeCategory, setActiveCategory] = useState(defaultCategory)
 
   useEffect(() => {
     async function fetchProductions() {
@@ -226,33 +238,35 @@ export default function WorkGallery() {
             className="font-cinzel text-4xl md:text-5xl font-semibold text-zinc-100"
             style={{ fontFamily: "'Cinzel', serif" }}
           >
-            Our Work
+            {sectionTitle}
           </h2>
           <div className="mt-6 mx-auto w-16 h-px bg-gradient-to-r from-transparent via-gold-500 to-transparent" />
         </div>
 
-        {/* Category filter tabs */}
-        <div className="flex flex-wrap justify-center gap-2 mb-12" role="tablist" aria-label="Filter by category">
-          {CATEGORIES.map(cat => {
-            const isActive = activeCategory === cat.id
-            return (
-              <button
-                key={cat.id}
-                role="tab"
-                aria-selected={isActive}
-                onClick={() => setActiveCategory(cat.id)}
-                className={`flex items-center gap-2 px-5 py-2 text-xs tracking-widest uppercase border transition-all duration-200 ${
-                  isActive
-                    ? 'border-gold-500 text-gold-400 bg-gold-500/5'
-                    : 'border-zinc-800 text-zinc-500 hover:border-zinc-600 hover:text-zinc-300'
-                }`}
-              >
-                {cat.icon}
-                {cat.label}
-              </button>
-            )
-          })}
-        </div>
+        {/* Category filter tabs — hidden on service detail pages */}
+        {showFilters && (
+          <div className="flex flex-wrap justify-center gap-2 mb-12" role="tablist" aria-label="Filter by category">
+            {CATEGORIES.map(cat => {
+              const isActive = activeCategory === cat.id
+              return (
+                <button
+                  key={cat.id}
+                  role="tab"
+                  aria-selected={isActive}
+                  onClick={() => setActiveCategory(cat.id)}
+                  className={`flex items-center gap-2 px-5 py-2 text-xs tracking-widest uppercase border transition-all duration-200 ${
+                    isActive
+                      ? 'border-gold-500 text-gold-400 bg-gold-500/5'
+                      : 'border-zinc-800 text-zinc-500 hover:border-zinc-600 hover:text-zinc-300'
+                  }`}
+                >
+                  {cat.icon}
+                  {cat.label}
+                </button>
+              )
+            })}
+          </div>
+        )}
 
         {/* Content states */}
         {loading && <Skeletons />}
@@ -263,13 +277,13 @@ export default function WorkGallery() {
 
         {!loading && !error && productions.length === 0 && (
           <p className="text-center text-zinc-600 tracking-wider text-sm uppercase py-12">
-            Productions coming soon.
+            {emptyMessage}
           </p>
         )}
 
         {!loading && !error && productions.length > 0 && filtered.length === 0 && (
           <p className="text-center text-zinc-600 tracking-wider text-sm uppercase py-12">
-            No {activeCategory.toLowerCase()} productions yet.
+            {emptyMessage}
           </p>
         )}
 

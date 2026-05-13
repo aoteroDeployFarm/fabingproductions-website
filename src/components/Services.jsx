@@ -1,4 +1,9 @@
+import { Link } from 'react-router-dom'
 import { useInView } from 'react-intersection-observer'
+import { SERVICE_ROUTES } from '../data/services'
+
+// Map service card id → route path
+const ROUTE_MAP = Object.fromEntries(SERVICE_ROUTES.map(r => [r.id, r.path]))
 
 // ── Icons ────────────────────────────────────────────────────────────────────
 
@@ -127,7 +132,7 @@ function ServiceCard({ svc, index }) {
       <p className="text-zinc-500 text-sm leading-relaxed mb-5 flex-1">{svc.description}</p>
 
       {/* Capability pills */}
-      <div className="flex flex-wrap gap-2 mt-auto">
+      <div className="flex flex-wrap gap-2 mb-5">
         {svc.pills.map(p => (
           <span
             key={p}
@@ -137,6 +142,20 @@ function ServiceCard({ svc, index }) {
           </span>
         ))}
       </div>
+
+      {/* Learn More link */}
+      {ROUTE_MAP[svc.id] && (
+        <Link
+          to={ROUTE_MAP[svc.id]}
+          className={`mt-auto inline-flex items-center gap-1.5 text-xs tracking-widest uppercase ${svc.color} opacity-70 hover:opacity-100 transition-opacity duration-200`}
+          aria-label={`Learn more about ${svc.label}`}
+        >
+          Learn More
+          <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24">
+            <path stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </Link>
+      )}
 
       {/* Bottom accent on hover */}
       <div className={`absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent ${svc.glow.replace('from-', 'via-').replace('/10', '/60')} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
@@ -178,12 +197,12 @@ export default function Services() {
 
         {/* CTA row */}
         <div className="mt-12 text-center">
-          <a
-            href="#contact"
+          <Link
+            to="/#contact"
             className="inline-block px-8 py-3 border border-zinc-700 text-zinc-400 text-sm tracking-widest uppercase hover:border-gold-500 hover:text-gold-400 transition-colors duration-200"
           >
             Book a Consultation
-          </a>
+          </Link>
         </div>
       </div>
     </section>

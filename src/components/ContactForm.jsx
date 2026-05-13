@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import emailjs from '@emailjs/browser'
 
 const INQUIRY_OPTIONS = [
@@ -13,8 +14,16 @@ const INQUIRY_OPTIONS = [
 const INITIAL = { name: '', email: '', purpose: '', message: '' }
 
 export default function ContactForm() {
+  const [searchParams] = useSearchParams()
   const [form, setForm] = useState(INITIAL)
   const [status, setStatus] = useState('idle') // idle | sending | success | error
+
+  // Pre-populate purpose from ?purpose= query param (set by service page CTAs)
+  useEffect(() => {
+    const purpose = searchParams.get('purpose') ?? ''
+    const valid = INQUIRY_OPTIONS.some(o => o.value === purpose)
+    if (valid && purpose) setForm(prev => ({ ...prev, purpose }))
+  }, [searchParams]) // eslint-disable-line
 
   function handleChange(e) {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))

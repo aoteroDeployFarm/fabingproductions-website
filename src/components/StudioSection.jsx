@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { useInView } from 'react-intersection-observer'
 import AudioPlayer from './AudioPlayer'
 
@@ -130,12 +131,12 @@ export default function StudioSection() {
               ))}
             </div>
 
-            <a
-              href="#contact"
+            <Link
+              to="/?purpose=Recording+Session#contact"
               className="inline-block mt-2 px-7 py-3 bg-gold-500 text-zinc-950 font-semibold text-xs tracking-widest uppercase hover:bg-gold-400 transition-colors duration-200"
             >
               Book Studio Time
-            </a>
+            </Link>
           </div>
 
           {/* Right — audio samples */}
