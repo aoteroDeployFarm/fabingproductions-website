@@ -20,7 +20,7 @@ export default function Hero() {
 
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
         <p className="text-gold-400 text-xs tracking-[0.4em] uppercase mb-6 font-inter font-light">
-          Cinematic · Media · Production
+          Video · Audio · Live Events
         </p>
 
         <h1
@@ -34,9 +34,22 @@ export default function Hero() {
           </span>
         </h1>
 
-        <p className="text-zinc-400 text-lg md:text-xl font-light max-w-xl mx-auto mb-12 leading-relaxed">
-          We craft stories that demand attention — from concept through final frame.
+        <p className="text-zinc-400 text-lg md:text-xl font-light max-w-2xl mx-auto mb-12 leading-relaxed">
+          Crafting immersive narratives through sight, sound, and experience —
+          from concept to final frame and live execution.
         </p>
+
+        {/* Capability pills */}
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
+          {['Visual Production', 'Audio Engineering', 'Event Production'].map(cap => (
+            <span
+              key={cap}
+              className="text-xs tracking-widest uppercase px-4 py-2 border border-zinc-800 text-zinc-500"
+            >
+              {cap}
+            </span>
+          ))}
+        </div>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
@@ -44,6 +57,12 @@ export default function Hero() {
             className="px-8 py-3 bg-gold-500 text-zinc-950 font-semibold text-sm tracking-widest uppercase rounded-none hover:bg-gold-400 transition-colors duration-200"
           >
             View Work
+          </a>
+          <a
+            href="#services"
+            className="px-8 py-3 border border-zinc-700 text-zinc-300 font-light text-sm tracking-widest uppercase hover:border-gold-500 hover:text-gold-400 transition-colors duration-200"
+          >
+            Our Services
           </a>
           <a
             href="#contact"
