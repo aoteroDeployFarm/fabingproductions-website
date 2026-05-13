@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "botridge"
+  },
+  "targets": {
+    "botridge": {
+      "hosting": {
+        "fabing": [
+          "fabing-productions"
+        ]
+      }
+    }
+  }
+}
