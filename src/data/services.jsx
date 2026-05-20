@@ -26,20 +26,28 @@ export const SERVICE_PAGES = {
     contactPurpose: 'Recording Session',
     specs: [
       {
-        group: 'Mic Locker',
-        items: ['Neumann U87 Ai', 'AKG C414 XLII', 'Shure SM7B', 'Sennheiser MD 421', 'Shure Beta 52A'],
+        group: 'Mic Locker — Drums',
+        items: ['Sennheiser', 'Audix', 'Telefunken', 'Rode', 'AKG'],
       },
       {
-        group: 'Preamps & Outboard',
-        items: ['API 3124+', 'Universal Audio 610', 'Neve 1073 (clone)', 'SSL G-Bus Compressor'],
+        group: 'Mic Locker — Instruments',
+        items: ['Sennheiser', 'Audix', 'Telefunken', 'Rode', 'AKG', 'Shure'],
       },
       {
-        group: 'DAW & Interfaces',
-        items: ['Pro Tools HDX', 'Logic Pro X', 'Universal Audio Apollo X16', 'Antelope Orion32+'],
+        group: 'Mic Locker — Vocals',
+        items: ['SE Electronics', 'Sennheiser', 'Audix', 'Shure', 'AKG', 'Rode'],
+      },
+      {
+        group: 'Preamps',
+        items: ['Midas', 'Lunatech', 'Allen & Heath', 'PreSonus', 'MOTU'],
+      },
+      {
+        group: 'DAW / Interfaces',
+        items: ['Studio One', 'Studio Pro', 'Midas', 'Allen & Heath', 'PreSonus', 'MOTU'],
       },
       {
         group: 'Monitoring',
-        items: ['Yamaha NS10M', 'Adam Audio S3V', 'Avantone MixCubes', 'Sonarworks SoundID'],
+        items: ['Kali Audio', 'Sony', 'Beyerdynamic', 'Turbosound'],
       },
     ],
     process: [
@@ -78,20 +86,20 @@ export const SERVICE_PAGES = {
     contactPurpose: 'Podcast Production',
     specs: [
       {
-        group: 'Microphones',
-        items: ['Shure SM7B (×4)', 'Rode PodMic', 'Electro-Voice RE20', 'Sennheiser MKH 416'],
+        group: 'Mic Locker',
+        items: ['Sennheiser', 'Audix', 'Telefunken', 'Rode', 'AKG', 'Shure'],
       },
       {
-        group: 'Recording & Routing',
-        items: ['Zoom LiveTrak L-20', 'Focusrite Scarlett OctoPre', 'Isolated multi-track WAV', 'ATEM Mini Extreme ISO'],
+        group: 'Recording',
+        items: ['Isolated Multi-Track', 'ATEM Mini Extreme ISO', 'Sony D-LOG'],
       },
       {
-        group: 'Video & Lighting',
-        items: ['Sony A7 IV (×3)', 'Blackmagic Pocket 6K Pro', 'LED panel array', 'Teleprompter rig'],
+        group: 'Video',
+        items: ['Sony', 'GoPro', 'DJI'],
       },
       {
-        group: 'Streaming & Distribution',
-        items: ['YouTube · Spotify · Apple', 'Riverside.fm integration', 'OBS Studio', 'Simulcast encoder'],
+        group: 'Streaming',
+        items: ['BlackMagic', 'OSee'],
       },
     ],
     process: [
@@ -117,12 +125,12 @@ export const SERVICE_PAGES = {
     seo: {
       title: 'Live Event Production & Concert Sound | Fabing Productions',
       description:
-        'End-to-end live event coordination — FOH sound, stage lighting, LED video walls, and on-site crew management from load-in to strike.',
+        'End-to-end live event coordination — FOH sound engineering, PA system deployment, and on-site crew management from load-in to strike.',
     },
     hero: {
       eyebrow: 'Concert & Event Ops',
       headline: 'From Concept\nTo Final Curtain.',
-      sub: 'Full-scale event coordination — front-of-house sound, stage lighting, LED video walls, and on-site crew from load-in to strike.',
+      sub: 'Full-scale event coordination — front-of-house sound engineering, PA system deployment, and on-site crew management from load-in to strike.',
       color: 'text-violet-400',
     },
     accent: { text: 'text-violet-400', border: 'border-violet-500/30', glow: 'from-violet-500/10' },
@@ -130,20 +138,12 @@ export const SERVICE_PAGES = {
     contactPurpose: 'Live Event Booking',
     specs: [
       {
-        group: 'FOH Consoles',
-        items: ['Yamaha CL5', 'Allen & Heath dLive S7000', 'DiGiCo SD12', 'Dante network audio'],
+        group: 'Consoles',
+        items: ['Midas', 'Allen & Heath'],
       },
       {
-        group: 'PA Systems',
-        items: ['d&b Audiotechnik line array', 'L-Acoustics KARA', 'Sub-woofer arrays', 'Stage monitor wedges & IEM'],
-      },
-      {
-        group: 'Lighting',
-        items: ['Avolites Arena console', 'Martin MAC Encore WRM', 'Chauvet COLORado Strip', 'Elation Artiste Picasso'],
-      },
-      {
-        group: 'Video & Visuals',
-        items: ['Absen LED wall panels', 'Barco projectors', 'Resolume Arena media server', 'IMAG cameras'],
+        group: 'PA System',
+        items: ['Turbosound'],
       },
     ],
     process: [
@@ -183,19 +183,19 @@ export const SERVICE_PAGES = {
     specs: [
       {
         group: 'Cameras',
-        items: ['Sony FX9', 'Blackmagic URSA Mini Pro 12K', 'DJI Ronin 4D', 'DJI Mavic 3 Pro (drone)'],
+        items: ['Sony', 'DJI', 'GoPro'],
       },
       {
         group: 'Lenses',
-        items: ['Zeiss CP.3 Prime Set', 'Canon Cinema CN-E Zooms', 'Leica Summilux-C', 'Sigma Art Series'],
+        items: ['Sony', 'Viltrox', 'Tamron'],
       },
       {
         group: 'Lighting',
-        items: ['ARRI SkyPanel S60-C', 'Aputure 600d Pro', 'Litepanels Gemini 2×1', 'Westcott FJ400 Strobe'],
+        items: ['LightKey', 'ADJ', "U'King"],
       },
       {
-        group: 'Post-Production',
-        items: ['DaVinci Resolve Studio', 'Adobe Premiere Pro', 'After Effects', 'Mocha Pro (VFX)'],
+        group: 'Post Production',
+        items: ['DaVinci Resolve', 'Studio Pro'],
       },
     ],
     process: [
