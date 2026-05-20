@@ -13,28 +13,8 @@ const DEMO_TRACKS = [
 
 const FACILITY_FEATURES = [
   {
-    title: 'Isolation Booths',
-    desc: 'Acoustically treated rooms for drum tracking, vocal overdubs, and live instrument isolation — designed for minimal bleed and maximum vibe.',
-    icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24">
-        <path stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"
-          d="M9 3a3 3 0 000 6h6a3 3 0 000-6H9zM3 10h18M9 14h6M12 14v7" />
-      </svg>
-    ),
-  },
-  {
-    title: 'Control Room',
-    desc: 'Flat-response monitoring environment with a calibrated mix position, industry-standard console, and outboard signal chain for critical listening.',
-    icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24">
-        <path stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"
-          d="M9 18V5l12-2v13M6 21a3 3 0 100-6 3 3 0 000 6zM18 19a3 3 0 100-6 3 3 0 000 6z" />
-      </svg>
-    ),
-  },
-  {
     title: 'Hosted Events',
-    desc: 'Private listening sessions, label showcases, record release parties, and small live performances in an intimate, professionally controlled environment.',
+    desc: 'Private listening sessions, label showcases, record release parties, and live performances in an intimate, professionally controlled environment.',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24">
         <path stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"
@@ -53,19 +33,8 @@ const FACILITY_FEATURES = [
     ),
   },
   {
-    title: 'Green Room',
-    desc: 'Comfortable artist lounge adjacent to the tracking floor — couch, monitor, Wi-Fi, and a coffee setup so the session never stalls between takes.',
-    icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24">
-        <path stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"
-          d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
-        <path stroke="currentColor" strokeWidth="1.4" d="M9 22V12h6v10" />
-      </svg>
-    ),
-  },
-  {
     title: 'Load-In Access',
-    desc: 'Street-level dock access for backline, drum kits, and production gear. No stairs, no freight elevators — straight onto the floor.',
+    desc: 'Street-level dock access for backline, drum kits, and production gear. No stairs, no freight elevators — straight onto the tracking floor.',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24">
         <path stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"
@@ -154,6 +123,25 @@ const GEAR_SECTIONS = [
       { name: "U'King",    use: 'Stage wash and accent lighting' },
     ],
   },
+  {
+    category: 'Backline',
+    color: 'text-rose-400',
+    items: [
+      { name: 'Fender',    use: 'Electric guitars and basses' },
+      { name: 'Gibson',    use: 'Classic electric and acoustic guitars' },
+      { name: 'PRS',       use: 'Premium solid-body electric guitars' },
+      { name: 'Martin',    use: 'High-fidelity acoustic guitars' },
+      { name: 'Sire',      use: 'Modern voiced electric basses' },
+      { name: 'Sterling',  use: 'Versatile electric guitars and basses' },
+      { name: 'Ampeg',     use: 'Industry-standard bass amplification' },
+      { name: 'Roland',    use: 'Synthesizers and keyboard amplification' },
+      { name: 'Moog',      use: 'Analog synthesis and sound design modules' },
+      { name: 'Behringer', use: 'Auxiliary keys and routing electronics' },
+      { name: 'DW',        use: 'Custom multi-piece acoustic drum kits' },
+      { name: 'Yamaha',    use: 'Studio acoustic drum kits and hardware' },
+      { name: 'Ludwig',    use: 'Classic vintage-voiced snare drums and kits' },
+    ],
+  },
 ]
 
 // ── Sub-components ────────────────────────────────────────────────────────────
@@ -224,13 +212,13 @@ export default function StudioFullPage() {
   return (
     <>
       <Helmet>
-        <title>Recording Studio & Facility | Fabing Productions</title>
+        <title>Live Recording Studio | Fabing Productions</title>
         <meta
           name="description"
-          content="Tour the Fabing Productions recording facility — isolation booths, a curated mic locker, reference control room, and a venue space for hosted events and showcases."
+          content="Fabing Productions — a premium Live Recording Studio powered by a Midas Console and 32-channel Multi-Track recording. Floor monitors, multi-mix headphone monitoring, full backline, and an auxiliary overdub room available at an off-site partner location."
         />
-        <meta property="og:title" content="Recording Studio & Facility | Fabing Productions" />
-        <meta property="og:description" content="Professional recording studio with isolation booths, top-tier gear, and hosted event capabilities." />
+        <meta property="og:title" content="Live Recording Studio | Fabing Productions" />
+        <meta property="og:description" content="Premium Live Recording Studio — Midas Console, 32-channel Multi-Track, full instrument backline, and hosted event capabilities." />
       </Helmet>
 
       {/* ── Hero ── */}
@@ -248,7 +236,7 @@ export default function StudioFullPage() {
             <span className="text-gold-400">The Studio</span>
           </nav>
 
-          <p className="text-gold-400 text-xs tracking-[0.4em] uppercase mb-4">The Facility</p>
+          <p className="text-gold-400 text-xs tracking-[0.4em] uppercase mb-4">Live Recording Studio</p>
           <h1
             className="font-cinzel text-5xl md:text-7xl font-semibold leading-none mb-6"
             style={{ fontFamily: "'Cinzel', serif" }}
@@ -256,9 +244,10 @@ export default function StudioFullPage() {
             <span className="text-gold block">The</span>
             <span className="text-zinc-100 block">Studio.</span>
           </h1>
-          <p className="text-zinc-400 text-lg font-light max-w-xl leading-relaxed mb-10">
-            A professional recording environment built for artists and bands — with the
-            infrastructure to host events, live broadcasts, and cinematic shoots.
+          <p className="text-zinc-400 text-lg font-light max-w-xl leading-relaxed mb-4">
+            A premium Live Recording Studio powered by a Midas Console and 32-channel
+            Multi-Track recording. Floor monitors and multi-mix headphone monitoring are
+            standard — with an auxiliary overdub room available at an off-site partner location.
           </p>
           <div className="flex flex-wrap gap-4">
             <Link
@@ -287,6 +276,23 @@ export default function StudioFullPage() {
             </h2>
             <div className="mt-4 w-12 h-px bg-gradient-to-r from-gold-500 to-transparent" />
           </div>
+
+          {/* ── Studio Showcase Photo Grid ── */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
+            <div className="aspect-video bg-zinc-900 border border-zinc-800 overflow-hidden flex items-center justify-center">
+              {/* Replace with: <img src="/assets/images/studio-main.jpg" alt="Main Tracking Room" className="w-full h-full object-cover" /> */}
+              <span className="text-zinc-700 text-xs tracking-widest uppercase text-center px-4">Main Tracking Room</span>
+            </div>
+            <div className="aspect-video bg-zinc-900 border border-zinc-800 overflow-hidden flex items-center justify-center">
+              {/* Replace with: <img src="/assets/images/studio-midas.jpg" alt="Midas Console" className="w-full h-full object-cover" /> */}
+              <span className="text-zinc-700 text-xs tracking-widest uppercase text-center px-4">Midas Console Detail</span>
+            </div>
+            <div className="aspect-video bg-zinc-900 border border-zinc-800 overflow-hidden flex items-center justify-center">
+              {/* Replace with: <img src="/assets/images/studio-backline.jpg" alt="Instruments & Backline" className="w-full h-full object-cover" /> */}
+              <span className="text-zinc-700 text-xs tracking-widest uppercase text-center px-4">Instruments &amp; Backline</span>
+            </div>
+          </div>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {FACILITY_FEATURES.map((item, i) => (
               <FacilityCard key={item.title} item={item} index={i} />

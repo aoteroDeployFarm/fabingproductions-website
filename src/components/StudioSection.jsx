@@ -101,8 +101,9 @@ export default function StudioSection() {
           </h2>
           <div className="mt-5 mx-auto w-16 h-px bg-gradient-to-r from-transparent via-gold-500 to-transparent" />
           <p className="mt-5 text-zinc-500 text-sm max-w-xl mx-auto leading-relaxed">
-            A professional recording environment built for artists and bands — with the
-            infrastructure to host events, shoots, and live broadcasts.
+            A premium Live Recording Studio — Midas Console, 32-channel Multi-Track
+            tracking, floor monitors, and multi-mix headphone monitoring. An auxiliary
+            overdub room is available at an off-site partner location.
           </p>
         </div>
 
@@ -110,6 +111,12 @@ export default function StudioSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Left — facility details */}
           <div className="space-y-8">
+            {/* Primary tracking space photo slot */}
+            <div className="aspect-video w-full bg-zinc-900 border border-zinc-800 overflow-hidden flex items-center justify-center">
+              {/* Replace with: <img src="/assets/images/studio-main.jpg" alt="Fabing Productions — Main Tracking Room" className="w-full h-full object-cover" /> */}
+              <span className="text-zinc-700 text-xs tracking-widest uppercase">Main Tracking Room</span>
+            </div>
+
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {FEATURES.map((item, i) => (
                 <FeatureTile key={item.title} item={item} index={i} />
