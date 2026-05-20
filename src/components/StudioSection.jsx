@@ -7,24 +7,29 @@ import AudioPlayer from './AudioPlayer'
 // An empty src string renders a "coming soon" placeholder gracefully.
 // ---------------------------------------------------------------------------
 
+// ── Audio track roster ───────────────────────────────────────────────────────
+// Drop real asset paths into `src` when Steven delivers the files.
+// title   → displayed as the primary track name in the player UI
+// artist  → secondary line; used here for genre · mix status context
+// src     → absolute path, relative URL, or imported asset; '' = placeholder
 const DEMO_TRACKS = [
   {
-    id: 'mix-1',
-    title: 'Full Band Mix — Room A',
-    artist: 'Fabing Productions Studio',
-    src: '',   // e.g. '/audio/band-mix-room-a.mp3'
+    id: 'track-1',
+    title: 'Room A — Full Band Tracking',
+    artist: 'Rock / Alt · Final Mix',
+    src: '',   // → '/audio/room-a-full-band.mp3'
   },
   {
-    id: 'mix-2',
-    title: 'Acoustic Session — Vocal + Guitar',
-    artist: 'Fabing Productions Studio',
-    src: '',
+    id: 'track-2',
+    title: 'Studio Session — Vocal & Acoustic',
+    artist: 'Singer-Songwriter · Mix Revision 3',
+    src: '',   // → '/audio/vocal-acoustic-session.mp3'
   },
   {
-    id: 'mix-3',
+    id: 'track-3',
     title: 'Mastered Single — Radio Edit',
-    artist: 'Fabing Productions Studio',
-    src: '',
+    artist: 'R&B / Soul · Mastered',
+    src: '',   // → '/audio/mastered-single-radio.mp3'
   },
 ]
 
@@ -33,31 +38,11 @@ const FEATURES = [
     icon: (
       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24">
         <path stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"
-          d="M9 3a3 3 0 000 6h6a3 3 0 000-6H9zM3 10h18M9 14h6M12 14v7" />
-      </svg>
-    ),
-    title: 'Isolation Booths',
-    desc: 'Acoustically treated rooms for drum tracking, vocal recording, and live instrument capture.',
-  },
-  {
-    icon: (
-      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24">
-        <path stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"
-          d="M9 18V5l12-2v13M6 21a3 3 0 100-6 3 3 0 000 6zM18 19a3 3 0 100-6 3 3 0 000 6z" />
-      </svg>
-    ),
-    title: 'Control Room',
-    desc: 'Industry-standard mixing console, reference monitors, and outboard gear for critical listening.',
-  },
-  {
-    icon: (
-      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24">
-        <path stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"
           d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 7a4 4 0 100 8 4 4 0 000-8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" />
       </svg>
     ),
     title: 'Hosted Events',
-    desc: 'The studio space doubles as a venue for private listening sessions, small showcases, and label showcases.',
+    desc: 'The studio space doubles as a venue for private listening sessions, small showcases, and label events.',
   },
   {
     icon: (
@@ -67,7 +52,7 @@ const FEATURES = [
       </svg>
     ),
     title: 'Video-Ready',
-    desc: 'Built-in camera rigs and stage lighting for live session recordings and content capture.',
+    desc: 'Built-in camera rigs and stage lighting for live session recordings and professional content capture.',
   },
 ]
 

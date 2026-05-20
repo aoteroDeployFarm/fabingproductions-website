@@ -82,9 +82,9 @@ const SERVICES = [
     color: 'text-violet-400',
     border: 'hover:border-violet-600/40',
     glow: 'from-violet-500/10',
-    pills: ['FOH Sound', 'Stage Lighting', 'LED Walls', 'Coordination'],
+    pills: ['FOH Sound', 'Stage Lighting', 'Coordination', 'AV Systems'],
     description:
-      'Full-scale live event coordination — from front-of-house sound to stage lighting and immersive visuals for concerts and corporate events.',
+      'Full-scale live event coordination — front-of-house sound engineering, stage lighting design, and technical production management for concerts and corporate events.',
   },
   {
     id: 'video',
@@ -93,9 +93,9 @@ const SERVICES = [
     color: 'text-rose-400',
     border: 'hover:border-rose-600/40',
     glow: 'from-rose-500/10',
-    pills: ['Music Videos', 'Commercial', 'Color Grade', 'VFX'],
+    pills: ['Music Videos', 'Commercial', 'Color Grade', 'Editorial'],
     description:
-      'Cinematic video production, music videos, and commercial content — direction, cinematography, editing, and color grading under one roof.',
+      'Premium cinematic video production for music videos and commercial campaigns — direction, cinematography, precision color grading, and editorial delivered end-to-end.',
   },
 ]
 
