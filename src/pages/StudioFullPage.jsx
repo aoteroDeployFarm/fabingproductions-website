@@ -145,6 +145,15 @@ const GEAR_SECTIONS = [
       { name: 'Turbosound',    use: 'Full-range monitoring and playback' },
     ],
   },
+  {
+    category: 'Stage Lighting',
+    color: 'text-violet-400',
+    items: [
+      { name: 'LightKey',  use: 'Stage lighting control and programming' },
+      { name: 'ADJ',       use: 'Architectural and performance fixtures' },
+      { name: "U'King",    use: 'Stage wash and accent lighting' },
+    ],
+  },
 ]
 
 // ── Sub-components ────────────────────────────────────────────────────────────

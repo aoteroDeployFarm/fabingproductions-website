@@ -145,6 +145,10 @@ export const SERVICE_PAGES = {
         group: 'PA System',
         items: ['Turbosound'],
       },
+      {
+        group: 'Lighting',
+        items: ['LightKey', 'ADJ', "U'King"],
+      },
     ],
     process: [
       {
