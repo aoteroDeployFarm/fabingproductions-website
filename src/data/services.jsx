@@ -47,7 +47,7 @@ export const SERVICE_PAGES = {
       },
       {
         group: 'Monitoring',
-        items: ['Kali Audio', 'Sony', 'Beyerdynamic', 'Turbosound'],
+        items: ['Kali Audio', 'Sony', 'Bayer Dynamic', 'Turbosound'],
       },
     ],
     process: [

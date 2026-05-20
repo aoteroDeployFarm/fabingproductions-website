@@ -98,6 +98,7 @@ const GEAR_SECTIONS = [
     color: 'text-gold-400',
     items: [
       { name: 'Studio One',    use: 'Primary DAW for tracking and mixing' },
+      { name: 'Studio Pro',    use: 'Advanced production and mixing suite' },
       { name: 'Midas',         use: 'Digital console with integrated I/O' },
       { name: 'Allen & Heath', use: 'Multitrack interface and routing hub' },
       { name: 'PreSonus',      use: 'High-channel-count recording interface' },
@@ -110,7 +111,7 @@ const GEAR_SECTIONS = [
     items: [
       { name: 'Kali Audio',    use: 'Near-field studio reference monitors' },
       { name: 'Sony',          use: 'Reference headphone monitoring' },
-      { name: 'Beyerdynamic',  use: 'Critical-listening studio headphones' },
+      { name: 'Bayer Dynamic', use: 'Critical-listening studio headphones' },
       { name: 'Turbosound',    use: 'Full-range monitoring and playback' },
     ],
   },
