@@ -271,6 +271,51 @@ The purge step is conditional — the workflow skips it gracefully if either sec
 
 ---
 
+## Cloudflare Pages Deployment (Alternative to Firebase Hosting)
+
+If deploying via **Cloudflare Pages** instead of Firebase Hosting, use the settings below.
+
+### Dashboard build settings
+
+| Field | Value |
+|---|---|
+| Framework preset | `Vite` |
+| Build command | `npm run build` |
+| Build output directory | `dist-fabing` |
+| Root directory | `/` (repo root) |
+
+### Environment variables (Pages dashboard → Settings → Environment variables)
+
+Add all `VITE_*` variables from the [Environment Variables](#environment-variables) table above, plus:
+
+| Variable | Value |
+|---|---|
+| `NODE_VERSION` | `20` |
+
+### SPA routing — `_redirects`
+
+Cloudflare Pages reads `public/_redirects`, which Vite copies verbatim into `dist-fabing/` at build time. The file at `public/_redirects` contains:
+
+```
+/*    /index.html   200
+```
+
+This rewrites every unmatched path (hard refreshes on `/studio`, `/work`, `/book`, `/services/*`, etc.) back to the React shell without returning a 404 from the edge.
+
+> **Do not delete `public/_redirects`.** Removing it will break direct URL navigation and page refreshes for all client-side routes.
+
+### Media asset pipeline
+
+| Asset type | Storage location |
+|---|---|
+| UI images, icons, SVGs (any size) | Commit directly to `public/` or `src/assets/` — Vite bundles or copies them |
+| Portfolio images < 25 MB | Commit to `public/images/` — served from Cloudflare Pages CDN |
+| Portfolio video / audio > 25 MB | **Do not commit to Git.** Store in external object storage (Firebase Storage, R2, S3, etc.) and reference via env var or hardcoded CDN URL |
+
+Keeping large binaries out of Git prevents repo bloat and avoids hitting Cloudflare Pages' 25 MB per-file upload limit.
+
+---
+
 ## CI/CD — GitHub Actions
 
 **File:** `.github/workflows/deploy-fabing.yml`  

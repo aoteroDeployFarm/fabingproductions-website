@@ -10,8 +10,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build-and-deploy:
-    name: Build & Deploy to fabing-productions
+  build:
+    name: Build verification
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
@@ -49,24 +49,3 @@ jobs:
           fi
           echo "Build verified at dist-fabing/"
 
-      - name: Deploy to Firebase Hosting (fabing target only)
-        uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_BOTRIDGE }}
-          projectId: botridge
-          target: fabing
-          channelId: live
-
-      - name: Purge Cloudflare cache
-        env:
-          CF_ZONE_ID: ${{ secrets.CF_ZONE_ID }}
-          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
-        if: env.CF_ZONE_ID != '' && env.CF_API_TOKEN != ''
-        run: |
-          curl -s -X POST \
-            "https://api.cloudflare.com/client/v4/zones/${CF_ZONE_ID}/purge_cache" \
-            -H "Authorization: Bearer ${CF_API_TOKEN}" \
-            -H "Content-Type: application/json" \
-            --data '{"purge_everything":true}' \
-            | jq '.success'
